@@ -1,0 +1,123 @@
+.login-page {
+	background: linear-gradient(
+			rgba(255, 255, 255, 0.4),
+			rgba(255, 255, 255, 0.4)
+		),
+		url("sfondoLogin.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	height: calc(100vh - 3.5em);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.last {
+	visibility: hidden;
+	width: 0;
+}
+
+.form-container {
+	width: 30em;
+	max-width: 90%;
+	margin-top: 6em;
+}
+
+.sub-button {
+	display: block;
+	width: 100%;
+}
+
+.invalid input {
+	border: 1px solid #b40e0e;
+	background-color: #fddddd;
+}
+
+.invalid input:focus {
+	border-color: #ff8800;
+	background-color: #fbe8d2;
+	box-shadow: 0 0 0 0.2rem #ff00004f;
+}
+
+.valid input {
+	border: 1px solid #2e8b57;
+	background-color: #ddfddf;
+}
+
+.valid input:focus {
+	border-color: #2e8b57;
+	background-color: #e6fbd2;
+	box-shadow: 0 0 0 0.2rem #2e8b5654;
+}
+
+.error-text {
+	margin-top: 0.2em;
+	color: #b40e0e;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.success-text {
+	margin-top: 0.2em;
+	color: #2e8b57;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.centered {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+}
+
+.img-login {
+	width: 10em;
+	margin-bottom: 1em;
+}
+
+.filter-green {
+	filter: invert(43%) sepia(80%) saturate(352%) hue-rotate(94deg)
+		brightness(89%) contrast(89%);
+}
+
+.filter-red {
+	filter: invert(14%) sepia(100%) saturate(7493%) hue-rotate(7deg)
+		brightness(106%) contrast(117%);
+}
+
+@keyframes transitionIn {
+	from {
+		opacity: 0;
+		transform: rotateX(-10deg);
+	}
+	to {
+		opacity: 1;
+		transform: rotateX(0);
+	}
+}
+
+@keyframes slideIn {
+	0% {
+		transform: translateX(-50%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+.form-container {
+	animation: slideIn 0.75s;
+}
+
+.login-page {
+	animation: transitionIn 0.75s;
+}
+
+@media (max-width: 768px) {
+	.login-page {
+		justify-content: center;
+	}
+}
