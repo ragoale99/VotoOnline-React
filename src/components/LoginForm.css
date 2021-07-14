@@ -1,13 +1,4 @@
 .login-page {
-	background: linear-gradient(
-			rgba(255, 255, 255, 0.4),
-			rgba(255, 255, 255, 0.4)
-		),
-		url("sfondoLogin.jpg");
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-attachment: fixed;
 	height: calc(100vh - 3.5em);
 	display: flex;
 	flex-direction: row;

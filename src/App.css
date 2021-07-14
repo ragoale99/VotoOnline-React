@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
 @keyframes transitionIn {
 	from {
 		opacity: 0;
@@ -11,4 +12,16 @@
 
 .App {
 	animation: transitionIn 0.75s;
+	font-family: "Montserrat", sans-serif;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	background: linear-gradient(
+			rgba(255, 255, 255, 0.4),
+			rgba(255, 255, 255, 0.4)
+		),
+		url("./sfondoLogin.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
 }

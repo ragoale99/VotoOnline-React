@@ -17,15 +17,35 @@
 		transform: translateX(0);
 	}
 }
+@keyframes slideInFromRight {
+	0% {
+		transform: translateX(800%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
 
-.item {
+.from-right {
+	animation: slideInFromRight 0.75s;
+}
+
+.from-left {
 	animation: slideInFromLeft 0.75s;
 }
 
 .generic-content {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
 	animation: transitionIn 0.75s;
+}
+
+.card-votations {
+	height: 95%;
+	box-shadow: 3px 5px 4px 2px rgba(0, 0, 0, 0.08);
+}
+
+.card-votations:hover {
+	transform: scale(1.03);
+	transition: all 0.3s;
+	box-shadow: 3px 5px 4px 5px rgba(0, 0, 0, 0.08);
+	cursor: pointer;
 }
