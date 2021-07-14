@@ -4,12 +4,31 @@
 }
 
 .card-option {
+	height: 65%;
 	margin-bottom: 6em;
+	box-shadow: 3px 5px 4px 2px rgba(0, 0, 0, 0.144);
+}
+
+.card-option:hover,
+.selected {
+	transform: scale(1.05);
+	transition: all 0.3s;
+	box-shadow: 3px 5px 4px 2px rgba(0, 0, 0, 0.26);
+	cursor: pointer;
+	background-color: rgba(251, 189, 243, 0.801);
+	-webkit-transition: background-color 500ms linear;
+	-ms-transition: background-color 500ms linear;
+	transition: background-color 500ms linear;
+}
+
+.not-selected {
+	background-color: rgba(53, 53, 53, 0.801);
 }
 
 .logo-img {
 	width: 10em;
 	margin-top: -80px;
+	box-shadow: 3px 5px 4px 2px rgba(0, 0, 0, 0.144);
 }
 
 .flex-container {
@@ -17,4 +36,12 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: row;
+}
+
+.disable-select {
+	user-select: none; /* supported by Chrome and Opera */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
 }
