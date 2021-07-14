@@ -23,8 +23,10 @@ export default function GenericContent() {
 									<Card.Body>
 										<Card.Title>{votation.title}</Card.Title>
 										<Card.Subtitle className="mb-2 text-muted">
-											Dal {moment(votation.dateStart).format("DD/MM/YYYY")} al{" "}
-											{moment(votation.dateEnd).format("DD/MM/YYYY")}
+											<em>
+												Dal {moment(votation.dateStart).format("DD/MM/YYYY")} al{" "}
+												{moment(votation.dateEnd).format("DD/MM/YYYY")}
+											</em>
 										</Card.Subtitle>
 										<Card.Text className="mb-4">
 											{votation.description}

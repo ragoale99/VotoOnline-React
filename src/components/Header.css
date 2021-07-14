@@ -4,7 +4,7 @@
 	align-items: center;
 	flex-direction: row;
 	height: 3.5em;
-	background-color: rgba(50, 110, 206, 0.904);
+	background-color: rgb(50, 110, 206);
 	box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.37);
 }
 
