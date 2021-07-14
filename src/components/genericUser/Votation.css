@@ -21,8 +21,13 @@
 	transition: background-color 500ms linear;
 }
 
+.selected {
+	background-color: rgba(251, 189, 243, 0.801) !important;
+}
+
 .not-selected {
-	background-color: rgba(53, 53, 53, 0.801);
+	background-color: rgba(53, 53, 53, 0.801) !important;
+	cursor: default !important;
 }
 
 .logo-img {

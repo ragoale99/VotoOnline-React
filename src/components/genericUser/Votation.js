@@ -22,7 +22,8 @@ export default function Votation(props) {
 	};
 
 	const selectCard = (option) => {
-		setVote(option);
+		if (vote === null) setVote(option);
+		else setVote(null);
 	};
 	return (
 		<>
@@ -37,8 +38,18 @@ export default function Votation(props) {
 											tabIndex="0"
 											className={`card-option p-1 disable-select ${
 												index % 2 === 0 ? "from-left" : "from-right"
-											} ${vote === option ? "selected" : "not-selected"}`}
-											onClick={() => selectCard(option)}>
+											} ${
+												vote === option
+													? "selected"
+													: vote !== null
+													? "not-selected"
+													: ""
+											}`}
+											onClick={
+												vote === option || vote === null
+													? () => selectCard(option)
+													: undefined
+											}>
 											<div className="flex-container">
 												<img
 													variant="top"
