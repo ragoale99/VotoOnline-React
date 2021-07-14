@@ -34,32 +34,38 @@ export default function GenericContent() {
 							</Col>
 						</Row>
 						<Row>
-							{votationsToDo.map((votation) => {
-								return (
-									<Col
-										xs={12}
-										md={6}
-										lg={4}
-										key={votation.id}
-										onClick={() => openVotation(votation)}>
-										<Card className="mb-3 card-votations p-1">
-											<Card.Body>
-												<Card.Title>{votation.title}</Card.Title>
-												<Card.Subtitle className="mb-2 text-muted">
-													<em>
-														Dal{" "}
-														{moment(votation.dateStart).format("DD/MM/YYYY")} al{" "}
-														{moment(votation.dateEnd).format("DD/MM/YYYY")}
-													</em>
-												</Card.Subtitle>
-												<Card.Text className="mb-4">
-													{votation.description}
-												</Card.Text>
-											</Card.Body>
-										</Card>
-									</Col>
-								);
-							})}
+							{votationsToDo.length > 0 ? (
+								votationsToDo.map((votation) => {
+									return (
+										<Col
+											xs={12}
+											md={6}
+											lg={4}
+											key={votation.id}
+											onClick={() => openVotation(votation)}>
+											<Card className="mb-3 card-votations p-1">
+												<Card.Body>
+													<Card.Title>{votation.title}</Card.Title>
+													<Card.Subtitle className="mb-2 text-muted">
+														<em>
+															Dal{" "}
+															{moment(votation.dateStart).format("DD/MM/YYYY")}{" "}
+															al {moment(votation.dateEnd).format("DD/MM/YYYY")}
+														</em>
+													</Card.Subtitle>
+													<Card.Text className="mb-4">
+														{votation.description}
+													</Card.Text>
+												</Card.Body>
+											</Card>
+										</Col>
+									);
+								})
+							) : (
+								<h3 className="mx-auto" style={{ color: "red" }}>
+									Non ci sono votazioni disponibili in questo momento
+								</h3>
+							)}
 						</Row>
 					</div>
 					<div className="mt-3 from-right">
@@ -69,24 +75,30 @@ export default function GenericContent() {
 							</Col>
 						</Row>
 						<Row>
-							{votationsDone.map((votation) => {
-								return (
-									<Col xs={12} md={6} lg={4} key={votation.id}>
-										<Card className="mb-3 card-votations p-1">
-											<Card.Body>
-												<Card.Title>{votation.title}</Card.Title>
-												<Card.Subtitle className="mb-2 text-muted">
-													<em>
-														Conclusa il{" "}
-														{moment(votation.dateEnd).format("DD/MM/YYYY")}
-													</em>
-												</Card.Subtitle>
-												<Card.Text>{votation.description}</Card.Text>
-											</Card.Body>
-										</Card>
-									</Col>
-								);
-							})}
+							{votationsDone.length > 0 ? (
+								votationsDone.map((votation) => {
+									return (
+										<Col xs={12} md={6} lg={4} key={votation.id}>
+											<Card className="mb-3 card-votations p-1">
+												<Card.Body>
+													<Card.Title>{votation.title}</Card.Title>
+													<Card.Subtitle className="mb-2 text-muted">
+														<em>
+															Conclusa il{" "}
+															{moment(votation.dateEnd).format("DD/MM/YYYY")}
+														</em>
+													</Card.Subtitle>
+													<Card.Text>{votation.description}</Card.Text>
+												</Card.Body>
+											</Card>
+										</Col>
+									);
+								})
+							) : (
+								<h3 className="mx-auto" style={{ color: "red" }}>
+									Non hai concluso ancora nessuna votazione
+								</h3>
+							)}
 						</Row>
 					</div>
 				</Container>
