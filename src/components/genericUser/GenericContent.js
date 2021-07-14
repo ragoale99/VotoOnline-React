@@ -7,6 +7,14 @@ import "./GenericContent.css";
 export default function GenericContent() {
 	// eslint-disable-next-line no-unused-vars
 	const { votations, changeVotations } = useContext(VotationsContext);
+
+	const votationsToDo = votations.filter((votation) => {
+		return votation.voted === false;
+	});
+
+	const votationsDone = votations.filter((votation) => {
+		return votation.voted !== false;
+	});
 	return (
 		<Container className="generic-content">
 			<div className="mt-3 from-left">
@@ -16,7 +24,7 @@ export default function GenericContent() {
 					</Col>
 				</Row>
 				<Row>
-					{votations.map((votation) => {
+					{votationsToDo.map((votation) => {
 						return (
 							<Col xs={12} md={6} lg={4} key={votation.id}>
 								<Card className="mb-3 card-votations p-1">
@@ -45,7 +53,7 @@ export default function GenericContent() {
 					</Col>
 				</Row>
 				<Row>
-					{votations.map((votation) => {
+					{votationsDone.map((votation) => {
 						return (
 							<Col xs={12} md={6} lg={4} key={votation.id}>
 								<Card className="mb-3 card-votations">

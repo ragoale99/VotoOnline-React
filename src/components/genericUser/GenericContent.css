@@ -36,6 +36,7 @@
 
 .generic-content {
 	animation: transitionIn 0.75s;
+	min-height: calc(100vh - 4.5em);
 }
 
 .card-votations {
