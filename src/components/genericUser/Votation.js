@@ -43,7 +43,7 @@ export default function Votation(props) {
 													? "selected"
 													: vote !== null
 													? "not-selected"
-													: ""
+													: "hover-behaviour"
 											}`}
 											onClick={
 												vote === option || vote === null
