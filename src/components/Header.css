@@ -24,3 +24,17 @@
 	top: 0.5em;
 	right: 1em;
 }
+
+.fab-logout {
+	display: none;
+}
+
+@media (max-width: 768px) {
+	.log-out-container {
+		display: none;
+	}
+
+	.fab-logout {
+		display: block;
+	}
+}
