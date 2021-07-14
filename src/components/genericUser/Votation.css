@@ -1,0 +1,20 @@
+.votation-content {
+	margin-top: 6em;
+	height: calc(100vh - 10em);
+}
+
+.card-option {
+	margin-bottom: 6em;
+}
+
+.logo-img {
+	width: 10em;
+	margin-top: -80px;
+}
+
+.flex-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+}

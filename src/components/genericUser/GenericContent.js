@@ -77,8 +77,7 @@ export default function GenericContent() {
 												<Card.Title>{votation.title}</Card.Title>
 												<Card.Subtitle className="mb-2 text-muted">
 													<em>
-														Dal{" "}
-														{moment(votation.dateStart).format("DD/MM/YYYY")} al{" "}
+														Conclusa il{" "}
 														{moment(votation.dateEnd).format("DD/MM/YYYY")}
 													</em>
 												</Card.Subtitle>
@@ -93,7 +92,9 @@ export default function GenericContent() {
 				</Container>
 			)}
 
-			{open && <Votation votation={selectedVotation}></Votation>}
+			{open && (
+				<Votation openVotation={open} votation={selectedVotation}></Votation>
+			)}
 		</>
 	);
 }
