@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
 	Col,
 	Row,
@@ -8,11 +8,13 @@ import {
 	OverlayTrigger,
 	Tooltip,
 } from "react-bootstrap";
+import { VotationsContext } from "../../App";
 import { FaVoteYea } from "react-icons/fa";
 import "./Votation.css";
 
 export default function Votation(props) {
-	const { openVotation, votation } = props;
+	const votations = useContext(VotationsContext);
+	const { setOpenVotation, openVotation, votation } = props;
 	const [vote, setVote] = useState(null);
 
 	const checkLength = () => {
@@ -24,6 +26,14 @@ export default function Votation(props) {
 	const selectCard = (option) => {
 		if (vote === null) setVote(option);
 		else setVote(null);
+	};
+
+	const handleEndVotation = () => {
+		let elToChange = votations.find((vot) => vot === votation);
+		elToChange.voted = true;
+		elToChange.result = vote.nome;
+		console.log(votations);
+		setOpenVotation(false);
 	};
 	return (
 		<>
@@ -70,7 +80,9 @@ export default function Votation(props) {
 							})}
 						</Row>
 					</div>
-					<div className="flex-container" style={{ flexDirection: "column" }}>
+					<div
+						className="flex-container end-votation"
+						style={{ flexDirection: "column" }}>
 						{!vote ? (
 							<OverlayTrigger
 								placement="top"
@@ -100,7 +112,10 @@ export default function Votation(props) {
 								<p className="mb-2">
 									Stai votando: <strong>{vote.nome}</strong>
 								</p>
-								<Button variant="primary" className="mb-5 px-3 py-2">
+								<Button
+									variant="primary"
+									className="mb-5 px-3 py-2"
+									onClick={handleEndVotation}>
 									<FaVoteYea size={20} className="mr-2 mb-1" />
 									Termina votazione
 								</Button>

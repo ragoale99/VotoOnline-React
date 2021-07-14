@@ -50,3 +50,16 @@
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* Internet Explorer/Edge */
 }
+
+@keyframes slideInFromBottom {
+	0% {
+		transform: translateY(150%);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+.end-votation {
+	animation: slideInFromBottom 0.75s;
+}

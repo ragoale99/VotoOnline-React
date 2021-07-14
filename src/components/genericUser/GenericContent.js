@@ -7,15 +7,15 @@ import "./GenericContent.css";
 
 export default function GenericContent() {
 	// eslint-disable-next-line no-unused-vars
-	const { votations, changeVotations } = useContext(VotationsContext);
+	const votations = useContext(VotationsContext);
 	const [open, setOpen] = useState(false);
 	const [selectedVotation, setSelectedVotation] = useState(null);
 
-	const votationsToDo = votations.filter((votation) => {
+	let votationsToDo = votations.filter((votation) => {
 		return votation.voted === false;
 	});
 
-	const votationsDone = votations.filter((votation) => {
+	let votationsDone = votations.filter((votation) => {
 		return votation.voted !== false;
 	});
 
@@ -93,7 +93,10 @@ export default function GenericContent() {
 			)}
 
 			{open && (
-				<Votation openVotation={open} votation={selectedVotation}></Votation>
+				<Votation
+					setOpenVotation={setOpen}
+					openVotation={open}
+					votation={selectedVotation}></Votation>
 			)}
 		</>
 	);

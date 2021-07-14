@@ -133,15 +133,16 @@ function App() {
 		setRole(typeUser);
 	};
 
-	const changeVotations = (votations) => {
+	/* 	const changeVotations = (votations) => {
 		setVotations(votations);
-	};
+	}; */
+
 	return (
 		<div className="App">
 			<RoleContext.Provider value={{ role, changeRole }}>
 				<Header />
 				{role === "" && <LoginForm />}
-				<VotationsContext.Provider value={{ votations, changeVotations }}>
+				<VotationsContext.Provider value={votations}>
 					{role === "genericUser" && <GenericContent />}
 					{role === "admin" && <AdminContent />}
 				</VotationsContext.Provider>
