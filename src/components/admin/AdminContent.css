@@ -1,0 +1,26 @@
+@keyframes deleteAnimation {
+	0% {
+		opacity: 1;
+	}
+
+	1% {
+		opacity: 1;
+	}
+
+	100% {
+		display: none;
+		opacity: 0;
+	}
+}
+
+.delete {
+	-webkit-animation: deleteAnimation 0.5s ease-out;
+	-moz-animation: deleteAnimation 0.5s ease-out;
+	-o-animation: deleteAnimation 0.5s ease-out;
+	animation: deleteAnimation 0.5s ease-out;
+}
+
+.cards {
+	height: 95%;
+	box-shadow: 3px 5px 4px 2px rgba(0, 0, 0, 0.144);
+}

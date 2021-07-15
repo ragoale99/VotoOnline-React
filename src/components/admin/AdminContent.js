@@ -1,10 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { VotationsContext } from "../../App";
-import { Col, Row, Container, Card } from "react-bootstrap";
+import { Col, Row, Container, Card, Button } from "react-bootstrap";
 import moment from "moment";
+import "./AdminContent.css";
 
 export default function AdminContent() {
-	const votations = useContext(VotationsContext);
+	const { votations, changeVotations } = useContext(VotationsContext);
+	const [del, setDel] = useState(false);
+	const [votationToDel, setVotationToDel] = useState(null);
+
+	const handleDeleteVotation = (votation) => {
+		setVotationToDel(votation);
+		setDel(true);
+		const newList = votations.filter((vote) => {
+			return vote !== votation;
+		});
+		setTimeout(() => {
+			changeVotations(newList);
+			setDel(false);
+		}, 500);
+	};
 	return (
 		<Container className="generic-content mb-2">
 			<div className="mt-3 from-left">
@@ -18,7 +33,10 @@ export default function AdminContent() {
 						votations.map((votation) => {
 							return (
 								<Col xs={12} md={6} lg={4} key={votation.id}>
-									<Card className="mb-3 card-votations p-1">
+									<Card
+										className={`mb-3 cards p-1 ${
+											del && votation === votationToDel ? "delete" : null
+										}`}>
 										<Card.Body>
 											<Card.Title>{votation.title}</Card.Title>
 											<Card.Subtitle className="mb-2 text-muted">
@@ -30,6 +48,11 @@ export default function AdminContent() {
 											<Card.Text className="mb-4">
 												{votation.description}
 											</Card.Text>
+											<Button
+												variant="danger"
+												onClick={() => handleDeleteVotation(votation)}>
+												Delete
+											</Button>
 										</Card.Body>
 									</Card>
 								</Col>

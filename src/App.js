@@ -10,7 +10,7 @@ export const RoleContext = createContext(null);
 export const VotationsContext = createContext(null);
 
 function App() {
-	const [role, setRole] = useState("");
+	const [role, setRole] = useState("admin");
 	const [votations, setVotations] = useState([
 		{
 			id: uuidv4(),
@@ -133,16 +133,16 @@ function App() {
 		setRole(typeUser);
 	};
 
-	/* 	const changeVotations = (votations) => {
-		setVotations(votations);
-	}; */
+	const changeVotations = (nuoveVotazioni) => {
+		setVotations(nuoveVotazioni);
+	};
 
 	return (
 		<div className="App">
 			<RoleContext.Provider value={{ role, changeRole }}>
 				<Header />
 				{role === "" && <LoginForm />}
-				<VotationsContext.Provider value={votations}>
+				<VotationsContext.Provider value={{ votations, changeVotations }}>
 					{role === "genericUser" && <GenericContent />}
 					{role === "admin" && <AdminContent />}
 				</VotationsContext.Provider>
