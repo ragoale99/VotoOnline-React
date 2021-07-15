@@ -63,3 +63,35 @@
 .end-votation {
 	animation: slideInFromBottom 0.75s;
 }
+
+.rules {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.rules:hover {
+	cursor: pointer;
+}
+
+.dropdown-img {
+	width: 0.9em;
+	-webkit-animation: action 0.7s infinite alternate;
+	animation: action 0.7s infinite alternate;
+}
+
+@-webkit-keyframes action {
+	0% {
+		transform: translateY(-3px);
+	}
+	100% {
+		transform: translateY(3px);
+	}
+}
+@keyframes action {
+	0% {
+		transform: translateY(-3px);
+	}
+	100% {
+		transform: translateY(3px);
+	}
+}
