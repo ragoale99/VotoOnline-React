@@ -96,7 +96,7 @@ export default function LoginForm() {
 	return (
 		<div className="login-page">
 			<div className="form-container">
-				<div className="centered">
+				<div className="centered avatar">
 					<img
 						src="/login.png"
 						alt=""
@@ -176,7 +176,13 @@ export default function LoginForm() {
 							<span className="d-inline-block" style={{ width: "100%" }}>
 								<Button
 									type="submit"
-									variant="primary"
+									variant={
+										(touchedEmail && touchedPassword) ||
+										emailInputIsInvalid ||
+										passwordInputIsInvalid
+											? "danger"
+											: "primary"
+									}
 									disabled
 									aria-disabled="true"
 									style={{ pointerEvents: "none" }}
@@ -186,7 +192,7 @@ export default function LoginForm() {
 							</span>
 						</OverlayTrigger>
 					) : (
-						<Button type="submit" variant="primary" className="sub-button mt-2">
+						<Button type="submit" variant="success" className="sub-button mt-2">
 							Accedi
 						</Button>
 					)}
