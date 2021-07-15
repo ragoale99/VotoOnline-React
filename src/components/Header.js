@@ -1,13 +1,21 @@
-import React, { useContext } from "react";
-import Button from "react-bootstrap/Button";
+import React, { useContext, useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 import { FiLogOut } from "react-icons/fi";
 import Fab from "@material-ui/core/Fab";
 import { RoleContext } from "../App";
 import "./Header.css";
 
 export default function Header() {
-	// eslint-disable-next-line no-unused-vars
 	const { role, changeRole } = useContext(RoleContext);
+	const [showDialog, setShowDialog] = useState(false);
+
+	const handleCloseDialog = () => setShowDialog(false);
+	const handleShowDialog = () => setShowDialog(true);
+
+	const handleLogout = () => {
+		changeRole("");
+		setShowDialog(false);
+	};
 	return (
 		<header className="header">
 			<div className="title-container">
@@ -22,13 +30,29 @@ export default function Header() {
 						<Button
 							variant="warning"
 							className="px-4"
-							onClick={() => changeRole("")}>
+							onClick={handleShowDialog}>
 							<FiLogOut size={26} /> Log out
 						</Button>
 					</div>
 					<Fab className="fab-logout" color="default" aria-label="logout">
 						<FiLogOut size={26} />
 					</Fab>
+					<Modal show={showDialog} onHide={handleCloseDialog}>
+						<Modal.Header closeButton>
+							<Modal.Title>Vuoi effettuare il logout?</Modal.Title>
+						</Modal.Header>
+						<Modal.Body>
+							<p>Verrai riportato alla pagina di login.</p>
+						</Modal.Body>
+						<Modal.Footer>
+							<Button variant="secondary" onClick={handleCloseDialog}>
+								Indietro
+							</Button>
+							<Button variant="danger" onClick={handleLogout}>
+								Esci
+							</Button>
+						</Modal.Footer>
+					</Modal>
 				</>
 			)}
 		</header>
