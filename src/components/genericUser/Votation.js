@@ -7,6 +7,7 @@ import {
 	Button,
 	OverlayTrigger,
 	Tooltip,
+	Modal,
 } from "react-bootstrap";
 import { VotationsContext } from "../../App";
 import { FaVoteYea } from "react-icons/fa";
@@ -17,6 +18,10 @@ export default function Votation(props) {
 	const { setOpenVotation, openVotation, votation } = props;
 	const [showRules, setShowRules] = useState(false);
 	const [vote, setVote] = useState(null);
+	const [showDialog, setShowDialog] = useState(false);
+
+	const handleCloseDialog = () => setShowDialog(false);
+	const handleShowDialog = () => setShowDialog(true);
 
 	const checkLength = () => {
 		if (votation.options.length === 2) return 6;
@@ -29,15 +34,16 @@ export default function Votation(props) {
 		else setVote(null);
 	};
 
-	const handlerEndVotation = () => {
+	const handleEndVotation = () => {
 		let elToChange = votations.find((vot) => vot === votation);
 		elToChange.voted = true;
 		elToChange.result = vote.nome;
 		console.log(votations);
 		setOpenVotation(false);
+		handleCloseDialog();
 	};
 
-	const handlerShowRules = () => {
+	const handleShowRules = () => {
 		setShowRules(!showRules);
 	};
 	return (
@@ -50,7 +56,7 @@ export default function Votation(props) {
 				</Row>
 				<Row>
 					<Col xs={12} className="centered py-2">
-						<p className="rules" onClick={handlerShowRules}>
+						<p className="rules" onClick={handleShowRules}>
 							{!showRules ? "Apri" : "Chiudi"} le regole da seguire per la
 							votazione
 							{!showRules ? (
@@ -111,7 +117,7 @@ export default function Votation(props) {
 													? () => selectCard(option)
 													: undefined
 											}>
-											<div className="flex-container">
+											<div className="flex-row-container">
 												<img
 													variant="top"
 													src={"/images/" + option.imagePath}
@@ -131,9 +137,7 @@ export default function Votation(props) {
 							})}
 						</Row>
 					</div>
-					<div
-						className="flex-container end-votation mb-2"
-						style={{ flexDirection: "column" }}>
+					<div className="flex-column-container end-votation mb-2">
 						{!vote ? (
 							<OverlayTrigger
 								placement="top"
@@ -143,9 +147,7 @@ export default function Votation(props) {
 									</Tooltip>
 								}>
 								<span className="d-inline-block" style={{ width: "100%" }}>
-									<div
-										className="flex-container"
-										style={{ flexDirection: "column" }}>
+									<div className="flex-column-container">
 										<Button
 											variant="primary"
 											className="px-3 py-2"
@@ -166,10 +168,37 @@ export default function Votation(props) {
 								<Button
 									variant="primary"
 									className="px-3 py-2"
-									onClick={handlerEndVotation}>
+									onClick={handleShowDialog}>
 									<FaVoteYea size={20} className="mr-2 mb-1" />
 									Termina votazione
 								</Button>
+								<Modal show={showDialog} onHide={handleCloseDialog}>
+									<Modal.Header closeButton>
+										<Modal.Title>Vuoi terminare la votazione?</Modal.Title>
+									</Modal.Header>
+									<Modal.Body>
+										Stai per votare:
+										<div className="flex-column-container">
+											<img
+												src={"/images/" + vote.imagePath}
+												className="rounded-circle"
+												style={{ width: "10em" }}
+												alt={vote.nome + " logo"}
+											/>
+											<h3 className="mt-2">
+												<strong>{vote.nome}</strong>
+											</h3>
+										</div>
+									</Modal.Body>
+									<Modal.Footer>
+										<Button variant="secondary" onClick={handleCloseDialog}>
+											Indietro
+										</Button>
+										<Button variant="success" onClick={handleEndVotation}>
+											Vota
+										</Button>
+									</Modal.Footer>
+								</Modal>
 							</>
 						)}
 					</div>
@@ -178,3 +207,4 @@ export default function Votation(props) {
 		</>
 	);
 }
+/* onClick={handlerEndVotation} */
