@@ -96,7 +96,7 @@ export default function LoginForm() {
 	return (
 		<div className="login-page">
 			<div className="form-container">
-				<div className="centered avatar">
+				<div className="centered">
 					<img
 						src="/login.png"
 						alt=""
@@ -126,6 +126,7 @@ export default function LoginForm() {
 							onChange={changeEmailHandler}
 							onBlur={blurEmailHandler}
 							value={enteredEmail}
+							className="ombre"
 						/>
 						{touchedEmail && (
 							<Form.Text
@@ -153,6 +154,7 @@ export default function LoginForm() {
 							onChange={changePasswordHandler}
 							onBlur={blurPasswordHandler}
 							value={enteredPassword}
+							className="ombre"
 						/>
 
 						{touchedPassword && (
@@ -186,13 +188,16 @@ export default function LoginForm() {
 									disabled
 									aria-disabled="true"
 									style={{ pointerEvents: "none" }}
-									className="sub-button mt-2">
+									className="sub-button mt-2 ombre">
 									Accedi
 								</Button>
 							</span>
 						</OverlayTrigger>
 					) : (
-						<Button type="submit" variant="success" className="sub-button mt-2">
+						<Button
+							type="submit"
+							variant="success"
+							className="sub-button mt-2 ombre">
 							Accedi
 						</Button>
 					)}
