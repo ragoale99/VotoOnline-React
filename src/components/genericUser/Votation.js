@@ -14,7 +14,8 @@ import { FaVoteYea } from "react-icons/fa";
 import "./Votation.css";
 
 export default function Votation(props) {
-	const votations = useContext(VotationsContext);
+	// eslint-disable-next-line no-unused-vars
+	const { votations, changeVotations } = useContext(VotationsContext);
 	const { setOpenVotation, openVotation, votation } = props;
 	const [showRules, setShowRules] = useState(false);
 	const [vote, setVote] = useState(null);

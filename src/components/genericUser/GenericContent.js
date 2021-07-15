@@ -7,7 +7,7 @@ import "./GenericContent.css";
 
 export default function GenericContent() {
 	// eslint-disable-next-line no-unused-vars
-	const votations = useContext(VotationsContext);
+	const { votations, changeVotations } = useContext(VotationsContext);
 	const [open, setOpen] = useState(false);
 	const [selectedVotation, setSelectedVotation] = useState(null);
 
@@ -23,6 +23,18 @@ export default function GenericContent() {
 		setOpen(true);
 		setSelectedVotation(votation);
 	};
+
+	const checkLength = (size, votes) => {
+		if (size === "lg") {
+			if (votes.length === 1) return 12;
+			else if (votes.length === 2) return 6;
+			else if (votes.length > 6) return 3;
+			else return 4;
+		}
+		if (votations.length === 1) return 12;
+		else return 6;
+	};
+
 	return (
 		<>
 			{!open && (
@@ -39,8 +51,8 @@ export default function GenericContent() {
 									return (
 										<Col
 											xs={12}
-											md={6}
-											lg={4}
+											md={checkLength("md", votationsToDo)}
+											lg={checkLength("lg", votationsToDo)}
 											key={votation.id}
 											onClick={() => openVotation(votation)}>
 											<Card className="mb-3 card-votations p-1">
@@ -78,7 +90,11 @@ export default function GenericContent() {
 							{votationsDone.length > 0 ? (
 								votationsDone.map((votation) => {
 									return (
-										<Col xs={12} md={6} lg={4} key={votation.id}>
+										<Col
+											xs={12}
+											md={checkLength("md", votationsDone)}
+											lg={checkLength("lg", votationsDone)}
+											key={votation.id}>
 											<Card className="mb-3 card-votations p-1">
 												<Card.Body>
 													<Card.Title>{votation.title}</Card.Title>

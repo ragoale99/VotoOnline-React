@@ -20,6 +20,18 @@ export default function AdminContent() {
 			setDel(false);
 		}, 500);
 	};
+
+	const checkLength = (size) => {
+		if (size === "lg") {
+			if (votations.length === 1) return 12;
+			else if (votations.length === 2) return 6;
+			else if (votations.length > 6) return 3;
+			else return 4;
+		}
+		if (votations.length === 1) return 12;
+		else return 6;
+	};
+
 	return (
 		<Container className="generic-content mb-2">
 			<div className="mt-3 from-left">
@@ -32,7 +44,11 @@ export default function AdminContent() {
 					{votations.length > 0 ? (
 						votations.map((votation) => {
 							return (
-								<Col xs={12} md={6} lg={4} key={votation.id}>
+								<Col
+									xs={12}
+									md={checkLength("md")}
+									lg={checkLength("lg")}
+									key={votation.id}>
 									<Card
 										className={`mb-3 cards p-1 ${
 											del && votation === votationToDel ? "delete" : null
@@ -45,13 +61,14 @@ export default function AdminContent() {
 													al {moment(votation.dateEnd).format("DD/MM/YYYY")}
 												</em>
 											</Card.Subtitle>
-											<Card.Text className="mb-4">
+											<Card.Text className="mb-5">
 												{votation.description}
 											</Card.Text>
 											<Button
+												className="btn-delete"
 												variant="danger"
 												onClick={() => handleDeleteVotation(votation)}>
-												Delete
+												Elimina votazione
 											</Button>
 										</Card.Body>
 									</Card>
