@@ -65,7 +65,7 @@ export default function AdminContent() {
 												{votation.description}
 											</Card.Text>
 											<Button
-												className="btn-delete"
+												className="btn-delete ombre-btn"
 												variant="danger"
 												onClick={() => handleDeleteVotation(votation)}>
 												Elimina votazione
@@ -77,10 +77,16 @@ export default function AdminContent() {
 						})
 					) : (
 						<h3 className="mx-auto" style={{ color: "red" }}>
-							Non ci sono votazioni disponibili in questo momento
+							Non ci sono votazioni disponibili in questo momento, ma puoi
+							crearne una nuova!
 						</h3>
 					)}
 				</Row>
+			</div>
+			<div className="flex-column-container my-4">
+				<Button variant="success" className="ombre-btn">
+					Crea una nuova votazione
+				</Button>
 			</div>
 		</Container>
 	);

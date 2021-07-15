@@ -151,7 +151,7 @@ export default function Votation(props) {
 									<div className="flex-column-container">
 										<Button
 											variant="primary"
-											className="px-3 py-2 ombre"
+											className="px-3 py-2 ombre-btn"
 											disabled
 											aria-disabled="true"
 											style={{ pointerEvents: "none" }}>
@@ -168,7 +168,7 @@ export default function Votation(props) {
 								</p>
 								<Button
 									variant="primary"
-									className="px-3 py-2 ombre"
+									className="px-3 py-2 ombre-btn"
 									onClick={handleShowDialog}>
 									<FaVoteYea size={20} className="mr-2 mb-1" />
 									Termina votazione
@@ -208,4 +208,3 @@ export default function Votation(props) {
 		</>
 	);
 }
-/* onClick={handlerEndVotation} */

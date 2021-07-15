@@ -188,7 +188,7 @@ export default function LoginForm() {
 									disabled
 									aria-disabled="true"
 									style={{ pointerEvents: "none" }}
-									className="sub-button mt-2 ombre">
+									className="sub-button mt-2 ombre-btn">
 									Accedi
 								</Button>
 							</span>
@@ -197,7 +197,7 @@ export default function LoginForm() {
 						<Button
 							type="submit"
 							variant="success"
-							className="sub-button mt-2 ombre">
+							className="sub-button mt-2 ombre-btn">
 							Accedi
 						</Button>
 					)}

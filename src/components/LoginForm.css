@@ -138,6 +138,10 @@
 	box-shadow: 0 5px 5px 0px rgba(85, 85, 85, 0.794);
 }
 
+.ombre-btn {
+	box-shadow: 0 5px 5px 0px rgba(85, 85, 85, 0.794);
+}
+
 .ombre:focus {
 	transform: scale(1.05);
 	transition: all 0.3s;
