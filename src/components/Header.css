@@ -27,7 +27,7 @@
 }
 
 .fab-logout {
-	display: none;
+	display: none !important;
 }
 
 @media (max-width: 768px) {
@@ -36,6 +36,11 @@
 	}
 
 	.fab-logout {
-		display: block;
+		background-color: #ffc106 !important;
+		display: block !important;
+		position: fixed !important;
+		right: 2em !important;
+		bottom: 1em !important;
+		z-index: 1 !important;
 	}
 }
