@@ -1,11 +1,10 @@
 .votation-content {
 	margin-top: 6em;
-	height: calc(100vh - 10em);
 }
 
 .card-option {
 	height: 65%;
-	margin-bottom: 6em;
+	margin-bottom: 5.5em;
 	box-shadow: 3px 5px 4px 2px rgba(0, 0, 0, 0.144);
 }
 
@@ -58,6 +57,19 @@
 	100% {
 		transform: translateY(0);
 	}
+}
+
+@keyframes slideInFromTop {
+	0% {
+		transform: translateY(-150%);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+.regole {
+	animation: slideInFromTop 0.75s;
 }
 
 .end-votation {

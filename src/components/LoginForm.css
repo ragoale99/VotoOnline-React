@@ -1,5 +1,4 @@
 .login-page {
-	height: calc(100vh - 3.5em);
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;

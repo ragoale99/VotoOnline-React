@@ -42,7 +42,7 @@ export default function Votation(props) {
 	};
 	return (
 		<>
-			<Container className="">
+			<Container className="regole">
 				<Row className="mt-4">
 					<Col xs={12} className="centered py-2">
 						<h1>Votazione: {votation.title}</h1>
@@ -89,7 +89,7 @@ export default function Votation(props) {
 			</Container>
 
 			{openVotation && (
-				<Container className="votation-content mb-2">
+				<Container className="votation-content">
 					<div className="mt-3">
 						<Row className="mt-4">
 							{votation.options.map((option, index) => {
@@ -132,7 +132,7 @@ export default function Votation(props) {
 						</Row>
 					</div>
 					<div
-						className="flex-container end-votation"
+						className="flex-container end-votation mb-2"
 						style={{ flexDirection: "column" }}>
 						{!vote ? (
 							<OverlayTrigger
@@ -148,7 +148,7 @@ export default function Votation(props) {
 										style={{ flexDirection: "column" }}>
 										<Button
 											variant="primary"
-											className="mb-5 px-3 py-2"
+											className="px-3 py-2"
 											disabled
 											aria-disabled="true"
 											style={{ pointerEvents: "none" }}>
@@ -165,7 +165,7 @@ export default function Votation(props) {
 								</p>
 								<Button
 									variant="primary"
-									className="mb-5 px-3 py-2"
+									className="px-3 py-2"
 									onClick={handlerEndVotation}>
 									<FaVoteYea size={20} className="mr-2 mb-1" />
 									Termina votazione
