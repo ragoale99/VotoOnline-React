@@ -27,3 +27,8 @@
 	right: 0.3em;
 	font-size: 14px;
 }
+
+.carta,
+.inp {
+	box-shadow: 0 5px 5px 0px rgba(109, 109, 109, 0.87);
+}

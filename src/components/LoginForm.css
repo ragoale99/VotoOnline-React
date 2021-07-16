@@ -100,11 +100,11 @@
 }
 
 .ombre {
-	box-shadow: 0 5px 5px 0px rgba(85, 85, 85, 0.794);
+	box-shadow: 0 5px 5px 0px rgba(109, 109, 109, 0.87);
 }
 
 .ombre-btn {
-	box-shadow: 0 5px 5px 0px rgba(85, 85, 85, 0.794);
+	box-shadow: 0 5px 5px 0px rgba(109, 109, 109, 0.87);
 }
 
 .ombre:focus {
