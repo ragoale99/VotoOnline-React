@@ -58,24 +58,6 @@
 	-ms-user-select: none; /* Internet Explorer/Edge */
 }
 
-@keyframes slideInFromBottom {
-	0% {
-		transform: translateY(150%);
-	}
-	100% {
-		transform: translateY(0);
-	}
-}
-
-@keyframes slideInFromTop {
-	0% {
-		transform: translateY(-150%);
-	}
-	100% {
-		transform: translateY(0);
-	}
-}
-
 .regole {
 	animation: slideInFromTop 0.75s;
 }
@@ -97,21 +79,4 @@
 	width: 0.9em;
 	-webkit-animation: action 0.7s infinite alternate;
 	animation: action 0.7s infinite alternate;
-}
-
-@-webkit-keyframes action {
-	0% {
-		transform: translateY(-3px);
-	}
-	100% {
-		transform: translateY(3px);
-	}
-}
-@keyframes action {
-	0% {
-		transform: translateY(-3px);
-	}
-	100% {
-		transform: translateY(3px);
-	}
 }

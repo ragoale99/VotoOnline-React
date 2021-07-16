@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+
+/* INIZIO ANIMAZIONI */
 @keyframes transitionIn {
 	from {
 		opacity: 0;
@@ -10,6 +12,97 @@
 	}
 }
 
+@keyframes slideInFromLeft {
+	0% {
+		transform: translateX(-500%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+@keyframes slideInFromRight {
+	0% {
+		transform: translateX(500%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+		transform: translatey(0px);
+	}
+}
+
+@keyframes slideIn {
+	0% {
+		transform: translateX(-50%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideInFromBottom {
+	0% {
+		transform: translateY(150%);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideInFromTop {
+	0% {
+		transform: translateY(-150%);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+@-webkit-keyframes action {
+	0% {
+		transform: translateY(-3px);
+	}
+	100% {
+		transform: translateY(3px);
+	}
+}
+@keyframes action {
+	0% {
+		transform: translateY(-3px);
+	}
+	100% {
+		transform: translateY(3px);
+	}
+}
+
+@keyframes deleteAnimation {
+	0% {
+		opacity: 1;
+	}
+
+	1% {
+		opacity: 1;
+	}
+
+	100% {
+		display: none;
+		opacity: 0;
+	}
+}
+/* FINE ANIMAZIONI */
 .App {
 	animation: transitionIn 0.75s;
 	font-family: "Montserrat", sans-serif;
