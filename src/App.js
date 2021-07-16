@@ -10,7 +10,7 @@ export const RoleContext = createContext(null);
 export const VotationsContext = createContext(null);
 
 function App() {
-	const [role, setRole] = useState("admin");
+	const [role, setRole] = useState("genericUser");
 	const [votations, setVotations] = useState([
 		{
 			id: uuidv4(),

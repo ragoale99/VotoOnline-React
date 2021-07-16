@@ -27,16 +27,12 @@ export default function Header() {
 			{role !== "" && (
 				<>
 					<div className="log-out-container">
-						<Button
-							variant="warning"
-							className="px-4"
+						<button
+							className="btn-logout ombre-btn"
 							onClick={handleShowDialog}>
-							<FiLogOut size={26} /> Log out
-						</Button>
+							<FiLogOut size={26} /> <span className="test">Log out</span>
+						</button>
 					</div>
-					<Fab className="fab-logout" color="default" aria-label="logout">
-						<FiLogOut size={26} />
-					</Fab>
 					<Modal show={showDialog} onHide={handleCloseDialog}>
 						<Modal.Header closeButton>
 							<Modal.Title>Vuoi effettuare il logout?</Modal.Title>
