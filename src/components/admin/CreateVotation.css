@@ -1,0 +1,29 @@
+.form-add-votation {
+	width: 50em !important;
+	max-width: 95%;
+	animation: slideIn 0.75s;
+}
+
+.date-container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: row;
+}
+
+.date-picker {
+	border: none;
+	box-shadow: 0 5px 5px 0px rgba(85, 85, 85, 0.794);
+	cursor: pointer;
+}
+
+.descrizione {
+	position: relative;
+}
+
+.counter {
+	position: absolute;
+	bottom: 0em;
+	right: 0.3em;
+	font-size: 14px;
+}

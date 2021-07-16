@@ -17,3 +17,7 @@
 	bottom: 1em;
 	right: 1em;
 }
+
+.create-but {
+	animation: slideInFromBottom 0.5s linear;
+}
