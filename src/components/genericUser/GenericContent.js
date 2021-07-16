@@ -9,6 +9,7 @@ export default function GenericContent() {
 	// eslint-disable-next-line no-unused-vars
 	const { votations, changeVotations } = useContext(VotationsContext);
 	const [open, setOpen] = useState(false);
+	const [voteToFlip, setVoteToFlip] = useState(null);
 	const [flipped, setFlipped] = useState(false);
 	const [selectedVotation, setSelectedVotation] = useState(null);
 
@@ -36,7 +37,8 @@ export default function GenericContent() {
 		else return 6;
 	};
 
-	const handleFlipped = () => {
+	const handleFlipped = (vote) => {
+		setVoteToFlip(vote);
 		setFlipped(!flipped);
 	}
 
@@ -100,8 +102,8 @@ export default function GenericContent() {
 											md={checkLength("md", votationsDone)}
 											lg={checkLength("lg", votationsDone)}
 											key={votation.id}>
-											<div class="scene">
-												<div class={`bueo ${flipped ? "is-flipped" : null}`} onClick={handleFlipped}>
+											<div className="scene">
+												<div className={`bueo ${flipped && voteToFlip === votation ? "is-flipped" : null}`} onClick={() => handleFlipped(votation)}>
 													<Card className="mb-3 bueo__face bueo__face--front p-1">
 														<Card.Body>
 															<Card.Title>{votation.title}</Card.Title>

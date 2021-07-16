@@ -39,7 +39,6 @@ export default function Votation(props) {
 		let elToChange = votations.find((vot) => vot === votation);
 		elToChange.voted = true;
 		elToChange.result = vote.nome;
-		console.log(votations);
 		setOpenVotation(false);
 		handleCloseDialog();
 	};

@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { FiLogOut } from "react-icons/fi";
-import Fab from "@material-ui/core/Fab";
 import { RoleContext } from "../App";
 import "./Header.css";
 

@@ -85,10 +85,10 @@
 }
 
 .bueo__face {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  backface-visibility: hidden;
+  position: absolute !important;
+  height: 100% !important;
+  width: 100% !important;
+  backface-visibility: hidden !important;
 	cursor: pointer;
 	box-shadow: 3px 5px 4px 2px rgba(0, 0, 0, 0.144);
 }
