@@ -69,7 +69,7 @@ export default function CreateVotation() {
 							<strong>Data di inizio</strong>
 						</Form.Label>
 						<DatePicker
-							className="date-picker"
+							className="date-picker p-1"
 							selected={startDate}
 							onChange={(date) => setStartDate(date)}
 						/>
@@ -79,7 +79,7 @@ export default function CreateVotation() {
 							<strong>Data di fine</strong>
 						</Form.Label>
 						<DatePicker
-							className="date-picker"
+							className="date-picker p-1"
 							selected={endDate}
 							onChange={(date) => setEndDate(date)}
 						/>
@@ -126,7 +126,10 @@ export default function CreateVotation() {
 					})}
 				</Row>
 				<Row className="mt-3">
-					<Button className="mx-auto ombre-btn" onClick={addCard}>
+					<Button
+						className="mx-auto ombre-btn"
+						onClick={addCard}
+						disabled={options.length >= 8}>
 						<IoIosAdd size={26} />
 					</Button>
 				</Row>

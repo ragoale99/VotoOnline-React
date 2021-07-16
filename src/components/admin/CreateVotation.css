@@ -15,6 +15,7 @@
 	border: none;
 	box-shadow: 0 5px 5px 0px rgba(85, 85, 85, 0.794);
 	cursor: pointer;
+	border-radius: 4px;
 }
 
 .descrizione {
