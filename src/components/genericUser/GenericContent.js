@@ -14,6 +14,7 @@ export default function GenericContent() {
 	const [selectedVotation, setSelectedVotation] = useState(null);
 
 	let votationsToDo = votations.filter((votation) => {
+		
 		return votation.voted === false;
 	});
 
