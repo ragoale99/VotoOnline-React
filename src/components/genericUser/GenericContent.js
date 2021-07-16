@@ -9,6 +9,7 @@ export default function GenericContent() {
 	// eslint-disable-next-line no-unused-vars
 	const { votations, changeVotations } = useContext(VotationsContext);
 	const [open, setOpen] = useState(false);
+	const [flipped, setFlipped] = useState(false);
 	const [selectedVotation, setSelectedVotation] = useState(null);
 
 	let votationsToDo = votations.filter((votation) => {
@@ -34,6 +35,10 @@ export default function GenericContent() {
 		if (votations.length === 1) return 12;
 		else return 6;
 	};
+
+	const handleFlipped = () => {
+		setFlipped(!flipped);
+	}
 
 	return (
 		<>
@@ -95,18 +100,27 @@ export default function GenericContent() {
 											md={checkLength("md", votationsDone)}
 											lg={checkLength("lg", votationsDone)}
 											key={votation.id}>
-											<Card className="mb-3 card-votations p-1">
-												<Card.Body>
-													<Card.Title>{votation.title}</Card.Title>
-													<Card.Subtitle className="mb-2 text-muted">
-														<em>
-															Conclusa il{" "}
-															{moment(votation.dateEnd).format("DD/MM/YYYY")}
-														</em>
-													</Card.Subtitle>
-													<Card.Text>{votation.description}</Card.Text>
-												</Card.Body>
-											</Card>
+											<div class="scene">
+												<div class={`bueo ${flipped ? "is-flipped" : null}`} onClick={handleFlipped}>
+													<Card className="mb-3 bueo__face bueo__face--front p-1">
+														<Card.Body>
+															<Card.Title>{votation.title}</Card.Title>
+															<Card.Subtitle className="mb-2 text-muted">
+																<em>
+																	Conclusa il{" "}
+																	{moment(votation.dateEnd).format("DD/MM/YYYY")}
+																</em>
+															</Card.Subtitle>
+															<Card.Text>{votation.description}</Card.Text>
+														</Card.Body>
+													</Card>
+													<Card className="bueo__face bueo__face--back p-1">
+														<Card.Body>
+															<Card.Title>{votation.result}</Card.Title>
+														</Card.Body>
+													</Card>
+												</div>
+											</div>
 										</Col>
 									);
 								})
