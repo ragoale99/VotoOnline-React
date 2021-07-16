@@ -26,6 +26,16 @@
 	}
 }
 
+.info {
+	margin-bottom: 0.4em;
+	margin-left: 0.4em;
+	color: blue;
+}
+
+.info:hover {
+	transform: scale(1.05);
+}
+
 .from-right {
 	animation: slideInFromRight 0.75s;
 }
@@ -41,6 +51,7 @@
 .card-votations {
 	height: 95%;
 	box-shadow: 3px 5px 4px 2px rgba(0, 0, 0, 0.144);
+	border-radius: 10px !important;
 }
 
 .card-votations:hover {
@@ -53,6 +64,7 @@
 	-webkit-transition: background-color 300ms linear;
 	-ms-transition: background-color 300ms linear;
 	transition: background-color 300ms linear;
+	
 }
 
 @media (max-width: 400px) {
@@ -75,6 +87,7 @@
   position: relative;
   transition: transform 1s;
   transform-style: preserve-3d;
+	
 }
 
 .bueo__face:hover {
@@ -91,6 +104,7 @@
   backface-visibility: hidden !important;
 	cursor: pointer;
 	box-shadow: 3px 5px 4px 2px rgba(0, 0, 0, 0.144);
+	border-radius: 10px !important;
 }
 
 .bueo__face--front {

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { VotationsContext } from "../../App";
-import { Col, Row, Container, Card } from "react-bootstrap";
+import { Col, Row, Container, Card, Tooltip ,OverlayTrigger} from "react-bootstrap";
+import {BsInfoCircleFill} from "react-icons/bs"
 import moment from "moment";
 import Votation from "./Votation";
 import "./GenericContent.css";
@@ -23,6 +24,8 @@ export default function GenericContent() {
 	});
 
 	const openVotation = (votation) => {
+		setVoteToFlip(null);
+		setFlipped(false);
 		setOpen(true);
 		setSelectedVotation(votation);
 	};
@@ -50,7 +53,17 @@ export default function GenericContent() {
 					<div className="mt-3 from-left">
 						<Row>
 							<Col className="centered py-2">
-								<h2 className="title-cards">Votationi disponibili</h2>
+								<h2 className="title-cards">Votazioni disponibili 
+								<OverlayTrigger
+							placement="bottom"
+							overlay={
+								<Tooltip id="tooltip">
+									Clicca su una votazione disponibile per iniziarla!
+								</Tooltip>
+							}>
+								<BsInfoCircleFill size={18} className="info"/>
+								
+								</OverlayTrigger></h2>
 							</Col>
 						</Row>
 						<Row>
@@ -91,7 +104,17 @@ export default function GenericContent() {
 					<div className="mt-3 from-right">
 						<Row>
 							<Col className="centered py-2">
-								<h2 className="title-cards">Votationi già concluse</h2>
+								<h2 className="title-cards">Votazioni concluse 
+								<OverlayTrigger
+							placement="bottom"
+							overlay={
+									<Tooltip id="tooltip">
+										Clicca su una votazione già conclusa per vedere cosa hai votato!
+									</Tooltip>
+								}>
+									<BsInfoCircleFill size={18} className="info"/>
+								</OverlayTrigger>
+								</h2>
 							</Col>
 						</Row>
 						<Row>
@@ -119,7 +142,7 @@ export default function GenericContent() {
 													</Card>
 													<Card className="bueo__face bueo__face--back p-1">
 														<Card.Body>
-															<Card.Title>{votation.result}</Card.Title>
+															<Card.Title>Alla votazione del {moment(votation.dateEnd).format("DD/MM/YYYY")} {" "} hai votato: <strong>{votation.result}</strong></Card.Title>
 														</Card.Body>
 													</Card>
 												</div>
