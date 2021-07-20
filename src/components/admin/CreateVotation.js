@@ -21,6 +21,8 @@ export default function CreateVotation() {
 			imagePath: null,
 		},
 	]);
+	const [url, setUrl] = useState([]);
+	const [imagePath, setImagePath] = useState([]);
 	const [charsCount, setCharsCount] = useState(0);
 	const [endDate, setEndDate] = useState(new Date());
 
@@ -33,6 +35,24 @@ export default function CreateVotation() {
 		event.preventDefault();
 	};
 
+	const preview = (e, index) => {
+		let files = e.files;
+		if (files.length === 0) return;
+		var mimeType = files[0].type;
+		if (mimeType.match(/image\/*/) == null) {
+			this.message = "Only images are supported.";
+			return;
+		}
+
+		var reader = new FileReader();
+		setImagePath(imagePath.splice(index, 0, files));
+		reader.readAsDataURL(files[0]);
+		reader.onload = (_event) => {
+			setUrl(url.splice(index, 1, reader.result));
+		};
+		console.log(imagePath[index]);
+	};
+
 	return (
 		<Container className="form-add-votation mt-4">
 			<Form className="mb-5" onSubmit={formSubmitHandler}>
@@ -40,12 +60,7 @@ export default function CreateVotation() {
 					<Form.Label>
 						<strong>Titolo</strong>
 					</Form.Label>
-					<Form.Control
-						type="text"
-						placeholder="Inserisci il titolo"
-						required
-						className="ombre"
-					/>
+					<Form.Control type="text" placeholder="Inserisci il titolo" required className="ombre" />
 				</Form.Group>
 				<Form.Group className="descrizione">
 					<Form.Label>
@@ -92,9 +107,7 @@ export default function CreateVotation() {
 							<Col xs={12} key={index}>
 								<Card className="mt-3	carta">
 									<Card.Body>
-										<Card.Title className="centered">
-											Carta {index + 1}
-										</Card.Title>
+										<Card.Title className="centered">Carta {index + 1}</Card.Title>
 										<Form.Group>
 											<Form.Label>
 												<strong>Nome</strong>
@@ -113,11 +126,15 @@ export default function CreateVotation() {
 											</Form.Label>
 											<Form.Control
 												type="file"
-												placeholder="Inserisci il titolo"
+												accept="image/*"
 												required
 												value={option.imagePath}
+												onChange={(event) => preview(event.target, index)}
 												className="inp"
 											/>
+											{url[index] !== undefined && (
+												<img src={"/images/" + url[index].name} alt={option.nome} />
+											)}
 										</Form.Group>
 									</Card.Body>
 								</Card>
@@ -126,18 +143,12 @@ export default function CreateVotation() {
 					})}
 				</Row>
 				<Row className="mt-3">
-					<Button
-						className="mx-auto ombre-btn"
-						onClick={addCard}
-						disabled={options.length >= 8}>
+					<Button className="mx-auto ombre-btn" onClick={addCard} disabled={options.length >= 8}>
 						<IoIosAdd size={26} />
 					</Button>
 				</Row>
 				<Row className="mt-4">
-					<Button
-						className="mx-auto ombre-btn py-2 px-4"
-						onClick={addCard}
-						variant="success">
+					<Button className="mx-auto ombre-btn py-2 px-4" onClick={addCard} variant="success">
 						<BiAddToQueue className="mr-1" /> Crea votazione
 					</Button>
 				</Row>
