@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { VotationsContext } from "../../App";
-import { Col, Row, Container, Card, Tooltip ,OverlayTrigger} from "react-bootstrap";
-import {BsInfoCircleFill} from "react-icons/bs"
+import { Col, Row, Container, Card, Tooltip, OverlayTrigger } from "react-bootstrap";
+import { BsInfoCircleFill } from "react-icons/bs";
 import moment from "moment";
 import Votation from "./Votation";
 import "./GenericContent.css";
@@ -15,7 +15,6 @@ export default function GenericContent() {
 	const [selectedVotation, setSelectedVotation] = useState(null);
 
 	let votationsToDo = votations.filter((votation) => {
-		
 		return votation.voted === false;
 	});
 
@@ -44,7 +43,13 @@ export default function GenericContent() {
 	const handleFlipped = (vote) => {
 		setVoteToFlip(vote);
 		setFlipped(!flipped);
-	}
+	};
+
+	const checkDataStart = (data) => {
+		const today = new Date();
+		const date = new Date(data);
+		return date.getTime() <= today.getTime();
+	};
 
 	return (
 		<>
@@ -53,17 +58,18 @@ export default function GenericContent() {
 					<div className="mt-3 from-left">
 						<Row>
 							<Col className="centered py-2">
-								<h2 className="title-cards">Votazioni disponibili 
-								<OverlayTrigger
-							placement="bottom"
-							overlay={
-								<Tooltip id="tooltip">
-									Clicca su una votazione disponibile per iniziarla!
-								</Tooltip>
-							}>
-								<BsInfoCircleFill size={18} className="info"/>
-								
-								</OverlayTrigger></h2>
+								<h2 className="title-cards">
+									Votazioni disponibili
+									<OverlayTrigger
+										placement="bottom"
+										overlay={
+											<Tooltip id="tooltip">
+												Clicca su una votazione disponibile per iniziarla!
+											</Tooltip>
+										}>
+										<BsInfoCircleFill size={18} className="info" />
+									</OverlayTrigger>
+								</h2>
 							</Col>
 						</Row>
 						<Row>
@@ -75,19 +81,40 @@ export default function GenericContent() {
 											md={checkLength("md", votationsToDo)}
 											lg={checkLength("lg", votationsToDo)}
 											key={votation.id}
-											onClick={() => openVotation(votation)}>
-											<Card className="mb-3 card-votations p-1">
+											onClick={
+												checkDataStart(votation.dateStart)
+													? () => openVotation(votation)
+													: undefined
+											}>
+											<Card
+												className={`mb-3  p-1 ${
+													checkDataStart(votation.dateStart)
+														? "card-votations"
+														: "card-votations-future"
+												}`}>
 												<Card.Body>
-													<Card.Title>{votation.title}</Card.Title>
-													<Card.Subtitle className="mb-2 text-muted">
-														<em>
-															Dal{" "}
-															{moment(votation.dateStart).format("DD/MM/YYYY")}{" "}
-															al {moment(votation.dateEnd).format("DD/MM/YYYY")}
-														</em>
-													</Card.Subtitle>
-													<Card.Text className="mb-4">
-														{votation.description}
+													<Card.Title
+														className={`mb-2 ${
+															checkDataStart(votation.dateStart) ? "" : "title-future"
+														}`}>
+														{votation.title}
+													</Card.Title>
+													{checkDataStart(votation.dateStart) && (
+														<Card.Subtitle className="mb-2 text-muted">
+															<em>
+																Dal {moment(votation.dateStart).format("DD/MM/YYYY")} al{" "}
+																{moment(votation.dateEnd).format("DD/MM/YYYY")}
+															</em>
+														</Card.Subtitle>
+													)}
+													<Card.Text
+														className={`mb-4 ${
+															checkDataStart(votation.dateStart) ? "" : "text-future"
+														}`}>
+														{checkDataStart(votation.dateStart)
+															? votation.description
+															: "La votazione inizierà il " +
+															  moment(votation.dateStart).format("DD/MM/YYYY")}
 													</Card.Text>
 												</Card.Body>
 											</Card>
@@ -104,16 +131,17 @@ export default function GenericContent() {
 					<div className="mt-3 from-right">
 						<Row>
 							<Col className="centered py-2">
-								<h2 className="title-cards">Votazioni concluse 
-								<OverlayTrigger
-							placement="bottom"
-							overlay={
-									<Tooltip id="tooltip">
-										Clicca su una votazione già conclusa per vedere cosa hai votato!
-									</Tooltip>
-								}>
-									<BsInfoCircleFill size={18} className="info"/>
-								</OverlayTrigger>
+								<h2 className="title-cards">
+									Votazioni concluse
+									<OverlayTrigger
+										placement="bottom"
+										overlay={
+											<Tooltip id="tooltip">
+												Clicca su una votazione già conclusa per vedere cosa hai votato!
+											</Tooltip>
+										}>
+										<BsInfoCircleFill size={18} className="info" />
+									</OverlayTrigger>
 								</h2>
 							</Col>
 						</Row>
@@ -127,22 +155,26 @@ export default function GenericContent() {
 											lg={checkLength("lg", votationsDone)}
 											key={votation.id}>
 											<div className="scene">
-												<div className={`bueo ${flipped && voteToFlip === votation ? "is-flipped" : null}`} onClick={() => handleFlipped(votation)}>
+												<div
+													className={`bueo ${
+														flipped && voteToFlip === votation ? "is-flipped" : null
+													}`}
+													onClick={() => handleFlipped(votation)}>
 													<Card className="mb-3 bueo__face bueo__face--front p-1">
 														<Card.Body>
 															<Card.Title>{votation.title}</Card.Title>
 															<Card.Subtitle className="mb-2 text-muted">
-																<em>
-																	Conclusa il{" "}
-																	{moment(votation.dateEnd).format("DD/MM/YYYY")}
-																</em>
+																<em>Conclusa il {moment(votation.dateEnd).format("DD/MM/YYYY")}</em>
 															</Card.Subtitle>
 															<Card.Text>{votation.description}</Card.Text>
 														</Card.Body>
 													</Card>
 													<Card className="bueo__face bueo__face--back p-1">
 														<Card.Body>
-															<Card.Title>Alla votazione del {moment(votation.dateEnd).format("DD/MM/YYYY")} {" "} hai votato: <strong>{votation.result}</strong></Card.Title>
+															<Card.Title>
+																Alla votazione del {moment(votation.dateEnd).format("DD/MM/YYYY")}{" "}
+																hai votato: <strong>{votation.result}</strong>
+															</Card.Title>
 														</Card.Body>
 													</Card>
 												</div>
