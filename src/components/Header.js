@@ -26,10 +26,8 @@ export default function Header() {
 			{role !== "" && (
 				<>
 					<div className="log-out-container">
-						<button
-							className="btn-logout ombre-btn"
-							onClick={handleShowDialog}>
-							<FiLogOut size={26} /> <span className="test">Log out</span>
+						<button className="btn-logout ombre-btn px-4" onClick={handleShowDialog}>
+							<FiLogOut size={26} /> <span className="test">Logout</span>
 						</button>
 					</div>
 					<Modal show={showDialog} onHide={handleCloseDialog}>

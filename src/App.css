@@ -1,4 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700;800&display=swap");
+
+* {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 500;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 
 /* INIZIO ANIMAZIONI */
 @keyframes transitionIn {
@@ -107,10 +118,7 @@
 	animation: transitionIn 0.75s;
 	font-family: "Montserrat", sans-serif;
 	overflow-x: hidden;
-	background: linear-gradient(
-			rgba(255, 255, 255, 0.4),
-			rgba(255, 255, 255, 0.4)
-		),
+	background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)),
 		url("./sfondoLogin.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
