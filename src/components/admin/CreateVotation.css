@@ -11,6 +11,13 @@
 	flex-direction: row;
 }
 
+.flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+}
+
 .date-picker {
 	border: none;
 	box-shadow: 0 5px 5px 0px rgba(85, 85, 85, 0.794);
@@ -29,7 +36,19 @@
 	font-size: 14px;
 }
 
+.carta {
+	position: relative;
+}
+
 .carta,
 .inp {
 	box-shadow: 0 5px 5px 0px rgba(109, 109, 109, 0.87);
+}
+
+.close-image {
+	position: absolute;
+	width: 22px;
+	top: 1em;
+	right: 1em;
+	cursor: pointer;
 }

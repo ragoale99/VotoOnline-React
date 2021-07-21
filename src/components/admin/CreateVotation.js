@@ -21,36 +21,40 @@ export default function CreateVotation() {
 			imagePath: null,
 		},
 	]);
-	const [url, setUrl] = useState([]);
-	const [imagePath, setImagePath] = useState([]);
+	const [file, setFile] = useState(["", "", "", "", "", "", "", ""]);
+
 	const [charsCount, setCharsCount] = useState(0);
 	const [endDate, setEndDate] = useState(new Date());
 
 	const addCard = () => {
 		setOptions([...options, { nome: "", imagePath: null }]);
-		console.log(options);
+	};
+	const deleteCard = (index) => {
+		let array = [...options]; // make a separate copy of the array
+		array.splice(index, 1);
+		setOptions(array);
+		let array2 = [...file];
+		array2.splice(index, 1);
+		setFile(array2);
 	};
 
 	const formSubmitHandler = (event) => {
 		event.preventDefault();
 	};
 
-	const preview = (e, index) => {
-		let files = e.files;
-		if (files.length === 0) return;
-		var mimeType = files[0].type;
-		if (mimeType.match(/image\/*/) == null) {
-			this.message = "Only images are supported.";
-			return;
-		}
-
-		var reader = new FileReader();
-		setImagePath(imagePath.splice(index, 0, files));
-		reader.readAsDataURL(files[0]);
-		reader.onload = (_event) => {
-			setUrl(url.splice(index, 1, reader.result));
-		};
-		console.log(imagePath[index]);
+	const fileHandler = (e, index) => {
+		setFile((file) => {
+			const copyItems = [...file];
+			const finalItems = [];
+			for (let i = 0; i < copyItems.length; i += 1) {
+				if (i === index) {
+					finalItems.push(e.target.files[0]);
+				} else {
+					finalItems.push(copyItems[i]);
+				}
+			}
+			return finalItems;
+		});
 	};
 
 	return (
@@ -106,6 +110,13 @@ export default function CreateVotation() {
 						return (
 							<Col xs={12} key={index}>
 								<Card className="mt-3	carta">
+									{index > 1 && (
+										<img
+											src="/close.png"
+											alt=""
+											className="close-image"
+											onClick={() => deleteCard(index)}></img>
+									)}
 									<Card.Body>
 										<Card.Title className="centered">Carta {index + 1}</Card.Title>
 										<Form.Group>
@@ -120,22 +131,26 @@ export default function CreateVotation() {
 												className="inp"
 											/>
 										</Form.Group>
+
 										<Form.Group>
 											<Form.Label>
 												<strong>Immagine</strong>
 											</Form.Label>
 											<Form.Control
 												type="file"
+												onChange={(event) => fileHandler(event, index)}
 												accept="image/*"
 												required
-												value={option.imagePath}
-												onChange={(event) => preview(event.target, index)}
 												className="inp"
 											/>
-											{url[index] !== undefined && (
-												<img src={"/images/" + url[index].name} alt={option.nome} />
-											)}
 										</Form.Group>
+										<div className="flex">
+											<img
+												className="rounded-circle"
+												src={file[index] ? URL.createObjectURL(file[index]) : null}
+												alt={file[index] ? file.name : null}
+											/>
+										</div>
 									</Card.Body>
 								</Card>
 							</Col>
