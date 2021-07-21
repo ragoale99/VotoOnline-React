@@ -143,7 +143,7 @@ export default function Votation(props) {
 								placement="top"
 								overlay={
 									<Tooltip id="tooltips">
-										Bottone disabilitato! Seleziona una carta per votarla..
+										Bottone disabilitato! Seleziona una carta per votarla.
 									</Tooltip>
 								}>
 								<span className="d-inline-block" style={{ width: "100%" }}>
