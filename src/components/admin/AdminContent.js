@@ -52,11 +52,7 @@ export default function AdminContent() {
 							{votations.length > 0 ? (
 								votations.map((votation) => {
 									return (
-										<Col
-											xs={12}
-											md={checkLength("md")}
-											lg={checkLength("lg")}
-											key={votation.id}>
+										<Col xs={12} md={checkLength("md")} lg={checkLength("lg")} key={votation.id}>
 											<Card
 												className={`mb-3 cards p-1 ${
 													del && votation === votationToDel ? "delete" : null
@@ -65,14 +61,11 @@ export default function AdminContent() {
 													<Card.Title>{votation.title}</Card.Title>
 													<Card.Subtitle className="mb-2 text-muted">
 														<em>
-															Dal{" "}
-															{moment(votation.dateStart).format("DD/MM/YYYY")}{" "}
-															al {moment(votation.dateEnd).format("DD/MM/YYYY")}
+															Dal {moment(votation.dateStart).format("DD/MM/YYYY")} al{" "}
+															{moment(votation.dateEnd).format("DD/MM/YYYY")}
 														</em>
 													</Card.Subtitle>
-													<Card.Text className="mb-5">
-														{votation.description}
-													</Card.Text>
+													<Card.Text className="mb-5">{votation.description}</Card.Text>
 													<Button
 														className="btn-delete ombre-btn"
 														variant="danger"
@@ -92,16 +85,13 @@ export default function AdminContent() {
 						</Row>
 					</div>
 					<div className="flex-column-container my-4">
-						<Button
-							variant="success"
-							className="ombre-btn create-but"
-							onClick={createVotation}>
+						<Button variant="success" className="ombre-btn create-but" onClick={createVotation}>
 							Crea una nuova votazione
 						</Button>
 					</div>
 				</Container>
 			) : (
-				<CreateVotation />
+				<CreateVotation setCreate={setCreate} />
 			)}
 		</>
 	);
