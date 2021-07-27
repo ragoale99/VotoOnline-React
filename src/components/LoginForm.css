@@ -21,7 +21,7 @@
 }
 
 .invalid input {
-	border: 1px solid #b40e0e;
+	border: 2px solid #b40e0e;
 	background-color: #fddddd;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .valid input {
-	border: 1px solid #2e8b57;
+	border: 2px solid #2e8b57;
 	background-color: #ddfddf;
 }
 
@@ -43,15 +43,15 @@
 }
 
 .error-text {
-	margin-top: 0.2em;
+	margin-top: 0.5em !important;
 	color: #b40e0e;
 	font-size: 15px;
 	font-weight: bold;
 }
 
 .success-text {
-	margin-top: 0.2em;
-	color: #2e8b57;
+	margin-top: 0.5em !important;
+	color: #197c10;
 	font-size: 15px;
 	font-weight: bold;
 }
@@ -76,13 +76,11 @@
 }
 
 .filter-green {
-	filter: invert(43%) sepia(80%) saturate(352%) hue-rotate(94deg)
-		brightness(89%) contrast(89%);
+	filter: invert(43%) sepia(80%) saturate(352%) hue-rotate(94deg) brightness(89%) contrast(89%);
 }
 
 .filter-red {
-	filter: invert(14%) sepia(100%) saturate(7493%) hue-rotate(7deg)
-		brightness(106%) contrast(117%);
+	filter: invert(14%) sepia(100%) saturate(7493%) hue-rotate(7deg) brightness(106%) contrast(117%);
 }
 
 .form-container {

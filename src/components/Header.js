@@ -19,7 +19,7 @@ export default function Header() {
 		<header className="header">
 			<div className="title-container">
 				<img src="/logo192.png" alt="logo react" className="logo mr-1" />
-				<h1 className="mt-1">
+				<h1 className="mt-2">
 					<strong>VotoOnline</strong>
 				</h1>
 			</div>

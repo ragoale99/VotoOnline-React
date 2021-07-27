@@ -103,9 +103,7 @@ export default function LoginForm() {
 						className={`img-login ${
 							formIsValid
 								? "filter-green"
-								: (touchedEmail && touchedPassword) ||
-								  emailInputIsInvalid ||
-								  passwordInputIsInvalid
+								: (touchedEmail && touchedPassword) || emailInputIsInvalid || passwordInputIsInvalid
 								? "filter-red"
 								: ""
 						}`}
@@ -114,12 +112,8 @@ export default function LoginForm() {
 				<Form className="mb-5" onSubmit={formSubmitHandler}>
 					<Form.Group
 						controlId="formBasicEmail"
-						className={
-							emailInputIsInvalid ? "invalid" : touchedEmail ? "valid" : ""
-						}>
-						<Form.Label>
-							<strong>Email</strong>
-						</Form.Label>
+						className={emailInputIsInvalid ? "invalid" : touchedEmail ? "valid" : ""}>
+						<Form.Label>Email</Form.Label>
 						<Form.Control
 							type="email"
 							placeholder="Inserisci l'email"
@@ -129,24 +123,15 @@ export default function LoginForm() {
 							className="ombre"
 						/>
 						{touchedEmail && (
-							<Form.Text
-								className={emailInputIsInvalid ? "error-text" : "success-text"}>
+							<Form.Text className={emailInputIsInvalid ? "error-text" : "success-text"}>
 								{emailMessage}
 							</Form.Text>
 						)}
 					</Form.Group>
 					<Form.Group
 						controlId="formBasicPassword"
-						className={
-							passwordInputIsInvalid
-								? "invalid"
-								: touchedPassword
-								? "valid"
-								: ""
-						}>
-						<Form.Label>
-							<strong>Password</strong>
-						</Form.Label>
+						className={passwordInputIsInvalid ? "invalid" : touchedPassword ? "valid" : ""}>
+						<Form.Label>Password</Form.Label>
 						<Form.Control
 							type="password"
 							autoComplete="on"
@@ -158,10 +143,7 @@ export default function LoginForm() {
 						/>
 
 						{touchedPassword && (
-							<Form.Text
-								className={
-									passwordInputIsInvalid ? "error-text" : "success-text"
-								}>
+							<Form.Text className={passwordInputIsInvalid ? "error-text" : "success-text"}>
 								{passwordMessage}
 							</Form.Text>
 						)}
@@ -171,8 +153,7 @@ export default function LoginForm() {
 							placement="top"
 							overlay={
 								<Tooltip id="tooltip">
-									Bottone disabilitato! Controlla che email e password siano
-									validi.
+									Bottone disabilitato! Controlla che email e password siano validi.
 								</Tooltip>
 							}>
 							<span className="d-inline-block" style={{ width: "100%" }}>
@@ -194,10 +175,7 @@ export default function LoginForm() {
 							</span>
 						</OverlayTrigger>
 					) : (
-						<Button
-							type="submit"
-							variant="success"
-							className="sub-button mt-2 ombre-btn">
+						<Button type="submit" variant="success" className="sub-button mt-2 ombre-btn">
 							Accedi
 						</Button>
 					)}

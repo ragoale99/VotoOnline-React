@@ -131,7 +131,7 @@ export default function CreateVotation(props) {
 				<img src="/back.png" alt="" />
 			</button>
 			<Container className="form-add-votation mt-4">
-				<h2 className="mt-5 centered">Crea una nuova votazione</h2>
+				<h2 className="mt-5 centered">Aggiungi una votazione</h2>
 				<Form className="mb-5" onSubmit={formSubmitHandler}>
 					<Form.Group>
 						<Form.Label>
