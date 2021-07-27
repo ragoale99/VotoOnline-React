@@ -18,6 +18,10 @@
 	flex-direction: row;
 }
 
+.preview {
+	box-shadow: 0 5px 5px 3px rgba(180, 180, 180, 0.671);
+}
+
 .date-picker {
 	border: none;
 	box-shadow: 0 5px 5px 0px rgba(85, 85, 85, 0.794);
@@ -42,7 +46,7 @@
 
 .carta,
 .inp {
-	box-shadow: 0 5px 5px 0px rgba(109, 109, 109, 0.87);
+	box-shadow: 0 5px 5px 0px rgba(175, 175, 175, 0.472);
 }
 
 .close-image {
@@ -51,4 +55,59 @@
 	top: 1em;
 	right: 1em;
 	cursor: pointer;
+}
+
+.cont {
+	position: relative;
+}
+
+.back {
+	position: absolute;
+	top: -2em;
+	left: 1em;
+	color: #2296f3;
+}
+
+.back:hover {
+	transform: scale(1.1);
+	-webkit-transition: all 500ms ease;
+	-moz-transition: all 500ms ease;
+	-ms-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+	transition: all 500ms ease;
+	cursor: pointer;
+	user-select: none; /* supported by Chrome and Opera */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.float-btn {
+	display: none;
+}
+
+@media (max-width: 1100px) {
+	.back {
+		display: none;
+	}
+	.float-btn {
+		display: block;
+		position: fixed;
+		border: none;
+		padding: 1em;
+		border-radius: 50%;
+		background-color: rgb(195, 178, 216);
+		bottom: 0.5em;
+		left: 0.5em;
+		z-index: 1;
+	}
+	.float-btn:hover {
+		transform: scale(1.1);
+		-webkit-transition: all 500ms ease;
+		-moz-transition: all 500ms ease;
+		-ms-transition: all 500ms ease;
+		-o-transition: all 500ms ease;
+		transition: all 500ms ease;
+	}
 }

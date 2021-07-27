@@ -115,164 +115,180 @@ export default function CreateVotation(props) {
 		props.setCreate(false);
 	};
 
-	return (
-		<Container className="form-add-votation mt-4">
-			<Form className="mb-5" onSubmit={formSubmitHandler}>
-				<Form.Group>
-					<Form.Label>
-						<strong>Titolo</strong>
-					</Form.Label>
-					<Form.Control
-						type="text"
-						placeholder="Inserisci il titolo"
-						required
-						className="ombre"
-						onChange={handleTitle}
-					/>
-				</Form.Group>
-				<Form.Group className="descrizione">
-					<Form.Label>
-						<strong>Descrizione</strong>
-					</Form.Label>
-					<Form.Control
-						as="textarea"
-						rows={3}
-						maxLength="100"
-						placeholder="Inserisci la descrizione"
-						required
-						onChange={handleDescription}
-						className="ombre"
-						style={{ resize: "none" }}
-					/>
-					<span className="counter">{charsCount}/100</span>
-				</Form.Group>
-				<div className="date-container">
-					<div className="flex-column-container">
-						<Form.Label>
-							<strong>Data di inizio</strong>
-						</Form.Label>
-						<DatePicker
-							className="date-picker p-1"
-							selected={startDate}
-							onChange={(date) => setStartDate(date)}
-						/>
-					</div>
-					<div className="flex-column-container">
-						<Form.Label>
-							<strong>Data di fine</strong>
-						</Form.Label>
-						<DatePicker
-							className="date-picker p-1"
-							selected={endDate}
-							onChange={(date) => setEndDate(date)}
-						/>
-					</div>
-				</div>
-				<h3 className="mt-5 centered">Inserisci scelte</h3>
-				<Row>
-					{options.map((option, index) => {
-						return (
-							<Col xs={12} key={index}>
-								<Card className="mt-3	carta">
-									{index > 1 && (
-										<img
-											src="/close.png"
-											alt=""
-											className="close-image"
-											onClick={() => deleteCard(index)}></img>
-									)}
-									<Card.Body>
-										<Card.Title className="centered">Carta {index + 1}</Card.Title>
-										<Form.Group>
-											<Form.Label>
-												<strong>Nome</strong>
-											</Form.Label>
-											<Form.Control
-												type="text"
-												placeholder="Inserisci il nome della carta"
-												onChange={(event) => handleName(event, index)}
-												required
-												className="inp"
-											/>
-										</Form.Group>
+	const backToAdminPage = () => {
+		props.setCreate(false);
+	};
 
-										<Form.Group>
-											<Form.Label>
-												<strong>Immagine</strong>
-											</Form.Label>
-											<Form.Control
-												type="file"
-												onChange={(event) => handleFile(event, index)}
-												accept="image/*"
-												required
-												className="inp"
-											/>
-										</Form.Group>
-										<div className="flex">
+	return (
+		<div className="cont">
+			<div class="flex back" onClick={backToAdminPage}>
+				<img src="/back.png" alt="" />
+				<h3 className="mt-2 ml-1">
+					<strong>Indietro</strong>
+				</h3>
+			</div>
+			<button class="mx-2 float-btn" onClick={backToAdminPage}>
+				<img src="/back.png" alt="" />
+			</button>
+			<Container className="form-add-votation mt-4">
+				<h2 className="mt-5 centered">Crea una nuova votazione</h2>
+				<Form className="mb-5" onSubmit={formSubmitHandler}>
+					<Form.Group>
+						<Form.Label>
+							<strong>Titolo</strong>
+						</Form.Label>
+						<Form.Control
+							type="text"
+							placeholder="Inserisci il titolo"
+							required
+							className="ombre"
+							onChange={handleTitle}
+						/>
+					</Form.Group>
+					<Form.Group className="descrizione">
+						<Form.Label>
+							<strong>Descrizione</strong>
+						</Form.Label>
+						<Form.Control
+							as="textarea"
+							rows={3}
+							maxLength="100"
+							placeholder="Inserisci la descrizione"
+							required
+							onChange={handleDescription}
+							className="ombre"
+							style={{ resize: "none" }}
+						/>
+						<span className="counter">{charsCount}/100</span>
+					</Form.Group>
+					<div className="date-container">
+						<div className="flex-column-container">
+							<Form.Label>
+								<strong>Data di inizio</strong>
+							</Form.Label>
+							<DatePicker
+								className="date-picker p-1"
+								selected={startDate}
+								onChange={(date) => setStartDate(date)}
+							/>
+						</div>
+						<div className="flex-column-container">
+							<Form.Label>
+								<strong>Data di fine</strong>
+							</Form.Label>
+							<DatePicker
+								className="date-picker p-1"
+								selected={endDate}
+								onChange={(date) => setEndDate(date)}
+							/>
+						</div>
+					</div>
+					<h3 className="mt-5 centered">Inserisci opzioni</h3>
+					<Row>
+						{options.map((option, index) => {
+							return (
+								<Col xs={12} key={index}>
+									<Card className="mt-3	carta">
+										{index > 1 && (
 											<img
-												className="rounded-circle"
-												src={file[index] ? URL.createObjectURL(file[index]) : null}
-												alt={file[index] ? file.name : null}
-											/>
-										</div>
-									</Card.Body>
-								</Card>
-							</Col>
-						);
-					})}
-				</Row>
-				<Row className="mt-3 flex">
-					{options.length >= 8 ? (
-						<OverlayTrigger
-							placement="top"
-							overlay={
-								<Tooltip id="tooltip">
-									Bottone disabilitato! Controlla che tutti i campi siano riempiti.
-								</Tooltip>
-							}>
-							<div>
-								<Button
-									className="mx-auto ombre-btn"
-									disabled
-									aria-disabled="true"
-									style={{ pointerEvents: "none" }}>
-									<IoIosAdd size={26} />
-								</Button>
-							</div>
-						</OverlayTrigger>
-					) : (
-						<Button className="mx-auto ombre-btn" onClick={addCard}>
-							<IoIosAdd size={26} />
-						</Button>
-					)}
-				</Row>
-				<Row className="mt-4 flex">
-					{!formIsValid ? (
-						<OverlayTrigger
-							placement="top"
-							overlay={
-								<Tooltip id="tooltip">
-									Bottone disabilitato! Controlla che tutti i campi siano riempiti.
-								</Tooltip>
-							}>
-							<div>
-								<Button
-									className="ombre-btn py-2 px-4"
-									variant="success"
-									disabled
-									aria-disabled="true"
-									style={{ pointerEvents: "none" }}>
-									<BiAddToQueue className="mr-1" /> Crea votazione
-								</Button>
-							</div>
-						</OverlayTrigger>
-					) : (
-						<Button className="mx-auto ombre-btn py-2 px-4" type="submit" variant="success">
-							<BiAddToQueue className="mr-1" /> Crea votazione
-						</Button>
-					)}
-				</Row>
-			</Form>
-		</Container>
+												src="/close.png"
+												alt=""
+												className="close-image"
+												onClick={() => deleteCard(index)}></img>
+										)}
+										<Card.Body>
+											<Card.Title className="centered">Carta {index + 1}</Card.Title>
+											<Form.Group>
+												<Form.Label>
+													<strong>Nome</strong>
+												</Form.Label>
+												<Form.Control
+													type="text"
+													placeholder="Inserisci il nome della carta"
+													onChange={(event) => handleName(event, index)}
+													required
+													className="inp"
+												/>
+											</Form.Group>
+
+											<Form.Group>
+												<Form.Label>
+													<strong>Immagine</strong>
+												</Form.Label>
+												<Form.Control
+													type="file"
+													onChange={(event) => handleFile(event, index)}
+													accept="image/*"
+													required
+													className="inp"
+												/>
+											</Form.Group>
+											<div className="flex">
+												<img
+													className="rounded-circle preview"
+													src={file[index] ? URL.createObjectURL(file[index]) : null}
+													alt={file[index] ? file.name : null}
+												/>
+											</div>
+										</Card.Body>
+									</Card>
+								</Col>
+							);
+						})}
+					</Row>
+					<Row className="mt-3 flex">
+						{options.length >= 8 ? (
+							<OverlayTrigger
+								placement="top"
+								overlay={
+									<Tooltip id="tooltip">
+										Bottone disabilitato! Controlla che tutti i campi siano riempiti.
+									</Tooltip>
+								}>
+								<div>
+									<Button
+										className="mx-auto ombre-btn"
+										disabled
+										aria-disabled="true"
+										style={{ pointerEvents: "none" }}>
+										<IoIosAdd size={26} />
+									</Button>
+								</div>
+							</OverlayTrigger>
+						) : (
+							<Button className="mx-auto ombre-btn" onClick={addCard}>
+								<IoIosAdd size={26} />
+							</Button>
+						)}
+					</Row>
+					<Row className="mt-4 flex">
+						{!formIsValid ? (
+							<OverlayTrigger
+								placement="top"
+								overlay={
+									<Tooltip id="tooltip">
+										Bottone disabilitato! Controlla che tutti i campi siano riempiti.
+									</Tooltip>
+								}>
+								<div>
+									<Button
+										className="ombre-btn py-2 px-4"
+										variant="success"
+										disabled
+										aria-disabled="true"
+										style={{ pointerEvents: "none" }}>
+										<BiAddToQueue className="mr-1" /> Crea votazione
+									</Button>
+								</div>
+							</OverlayTrigger>
+						) : (
+							<Button className="mx-auto ombre-btn py-2 px-4" type="submit" variant="success">
+								<BiAddToQueue className="mr-1" /> Crea votazione
+							</Button>
+						)}
+					</Row>
+				</Form>
+			</Container>
+		</div>
 	);
 }
