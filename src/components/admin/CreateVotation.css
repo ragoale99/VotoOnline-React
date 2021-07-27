@@ -19,7 +19,7 @@
 }
 
 .preview {
-	box-shadow: 0 5px 5px 3px rgba(180, 180, 180, 0.671);
+	width: 11em;
 }
 
 .date-picker {
@@ -44,7 +44,10 @@
 	position: relative;
 }
 
-.carta,
+.carta {
+	box-shadow: 0 3px 3px 0px rgba(143, 143, 143, 0.87);
+}
+
 .inp {
 	box-shadow: 0 5px 5px 0px rgba(175, 175, 175, 0.472);
 }
@@ -65,7 +68,7 @@
 	position: absolute;
 	top: -2em;
 	left: 1em;
-	color: #2296f3;
+	color: #2248f3;
 }
 
 .back:hover {
@@ -97,10 +100,10 @@
 		border: none;
 		padding: 1em;
 		border-radius: 50%;
-		background-color: rgb(195, 178, 216);
-		bottom: 0.5em;
+		background-color: rgb(209, 169, 169);
+		bottom: 1em;
 		left: 0.5em;
-		z-index: 1;
+		z-index: 10;
 	}
 	.float-btn:hover {
 		transform: scale(1.1);

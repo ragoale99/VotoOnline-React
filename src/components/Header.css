@@ -48,7 +48,15 @@
 		right: 2em;
 		bottom: 1em;
 		z-index: 10;
-		transition: all 0.3s ease-in-out;
+	}
+
+	.btn-logout:hover {
+		transform: scale(1.1);
+		-webkit-transition: all 500ms ease;
+		-moz-transition: all 500ms ease;
+		-ms-transition: all 500ms ease;
+		-o-transition: all 500ms ease;
+		transition: all 500ms ease;
 	}
 
 	.test {

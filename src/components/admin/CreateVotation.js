@@ -1,6 +1,4 @@
 import React, { useState, useContext } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import { BiAddToQueue } from "react-icons/bi";
 import { IoIosAdd } from "react-icons/io";
 import { Col, Row, Container, Button, Form, Card, OverlayTrigger, Tooltip } from "react-bootstrap";
@@ -53,6 +51,14 @@ export default function CreateVotation(props) {
 	const handleDescription = (event) => {
 		setDescription(event.target.value);
 		setCharsCount(event.target.value.length);
+	};
+
+	const handleEndDate = (event) => {
+		setEndDate(event.target.value);
+	};
+
+	const handleStartDate = (event) => {
+		setStartDate(event.target.value);
 	};
 
 	const handleName = (event, index) => {
@@ -134,9 +140,7 @@ export default function CreateVotation(props) {
 				<h2 className="mt-5 centered">Aggiungi una votazione</h2>
 				<Form className="mb-5" onSubmit={formSubmitHandler}>
 					<Form.Group>
-						<Form.Label>
-							<strong>Titolo</strong>
-						</Form.Label>
+						<Form.Label>Titolo</Form.Label>
 						<Form.Control
 							type="text"
 							placeholder="Inserisci il titolo"
@@ -146,9 +150,7 @@ export default function CreateVotation(props) {
 						/>
 					</Form.Group>
 					<Form.Group className="descrizione">
-						<Form.Label>
-							<strong>Descrizione</strong>
-						</Form.Label>
+						<Form.Label>Descrizione</Form.Label>
 						<Form.Control
 							as="textarea"
 							rows={3}
@@ -163,24 +165,16 @@ export default function CreateVotation(props) {
 					</Form.Group>
 					<div className="date-container">
 						<div className="flex-column-container">
-							<Form.Label>
-								<strong>Data di inizio</strong>
-							</Form.Label>
-							<DatePicker
-								className="date-picker p-1"
-								selected={startDate}
-								onChange={(date) => setStartDate(date)}
-							/>
+							<Form.Group>
+								<Form.Label>Data di inizio</Form.Label>
+								<Form.Control type="date" required className="ombre" onChange={handleStartDate} />
+							</Form.Group>
 						</div>
 						<div className="flex-column-container">
-							<Form.Label>
-								<strong>Data di fine</strong>
-							</Form.Label>
-							<DatePicker
-								className="date-picker p-1"
-								selected={endDate}
-								onChange={(date) => setEndDate(date)}
-							/>
+							<Form.Group>
+								<Form.Label>Data di fine</Form.Label>
+								<Form.Control type="date" required className="ombre" onChange={handleEndDate} />
+							</Form.Group>
 						</div>
 					</div>
 					<h3 className="mt-5 centered">Inserisci opzioni</h3>
@@ -199,9 +193,7 @@ export default function CreateVotation(props) {
 										<Card.Body>
 											<Card.Title className="centered">Carta {index + 1}</Card.Title>
 											<Form.Group>
-												<Form.Label>
-													<strong>Nome</strong>
-												</Form.Label>
+												<Form.Label>Nome</Form.Label>
 												<Form.Control
 													type="text"
 													placeholder="Inserisci il nome della carta"
@@ -212,9 +204,7 @@ export default function CreateVotation(props) {
 											</Form.Group>
 
 											<Form.Group>
-												<Form.Label>
-													<strong>Immagine</strong>
-												</Form.Label>
+												<Form.Label>Immagine</Form.Label>
 												<Form.Control
 													type="file"
 													onChange={(event) => handleFile(event, index)}
