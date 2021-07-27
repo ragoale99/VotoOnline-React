@@ -164,18 +164,14 @@ export default function CreateVotation(props) {
 						<span className="counter">{charsCount}/100</span>
 					</Form.Group>
 					<div className="date-container">
-						<div className="flex-column-container">
-							<Form.Group>
-								<Form.Label>Data di inizio</Form.Label>
-								<Form.Control type="date" required className="ombre" onChange={handleStartDate} />
-							</Form.Group>
-						</div>
-						<div className="flex-column-container">
-							<Form.Group>
-								<Form.Label>Data di fine</Form.Label>
-								<Form.Control type="date" required className="ombre" onChange={handleEndDate} />
-							</Form.Group>
-						</div>
+						<Form.Group>
+							<Form.Label>Data di inizio</Form.Label>
+							<Form.Control type="date" required className="ombre" onChange={handleStartDate} />
+						</Form.Group>
+						<Form.Group>
+							<Form.Label>Data di fine</Form.Label>
+							<Form.Control type="date" required className="ombre" onChange={handleEndDate} />
+						</Form.Group>
 					</div>
 					<h3 className="mt-5 centered">Inserisci opzioni</h3>
 					<Row>
