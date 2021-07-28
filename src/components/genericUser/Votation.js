@@ -1,14 +1,5 @@
 import React, { useState, useContext } from "react";
-import {
-	Col,
-	Row,
-	Container,
-	Card,
-	Button,
-	OverlayTrigger,
-	Tooltip,
-	Modal,
-} from "react-bootstrap";
+import { Col, Row, Container, Card, Button, OverlayTrigger, Tooltip, Modal } from "react-bootstrap";
 import { VotationsContext } from "../../App";
 import { FaVoteYea } from "react-icons/fa";
 import "./Votation.css";
@@ -50,15 +41,16 @@ export default function Votation(props) {
 		<>
 			<Container className="regole">
 				<Row className="mt-4">
-					<Col xs={12} className="centered py-2">
-						<h1>Votazione: {votation.title}</h1>
+					<Col xs={12} className="centered py-1">
+						<h1>
+							Votazione: <strong>{votation.title}</strong>
+						</h1>
 					</Col>
 				</Row>
 				<Row>
-					<Col xs={12} className="centered py-2">
+					<Col xs={12} className="centered">
 						<p className="rules" onClick={handleShowRules}>
-							{!showRules ? "Apri" : "Chiudi"} le regole da seguire per la
-							votazione
+							{!showRules ? "Apri" : "Chiudi"} le regole da seguire per la votazione
 							{!showRules ? (
 								<img src="/down.png" alt="" className="dropdown-img ml-1" />
 							) : (
@@ -68,7 +60,7 @@ export default function Votation(props) {
 					</Col>
 				</Row>
 				<Row>
-					<Col xs={12} className="centered py-2">
+					<Col xs={12} className="centered">
 						{showRules && (
 							<ul>
 								<li>
@@ -77,16 +69,15 @@ export default function Votation(props) {
 								<li>
 									Per votare è necessario fare un
 									<strong> click (da PC)</strong> o un
-									<strong> tap (da cellulare)</strong> sulla scelta da votare.
-									Si può fare nuovamente la stessa operazione sulla carta scelta
-									per <strong>annulare</strong> il voto e sceglierne un'altra.
+									<strong> tap (da cellulare)</strong> sulla scelta da votare. Si può fare
+									nuovamente la stessa operazione sulla carta scelta per <strong>annulare</strong>{" "}
+									il voto e sceglierne un'altra.
 								</li>
 								<li>
 									Una volta fatta la scelta, cliccare sul bottone
-									<strong> "Termina votazione"</strong>. A questo punto si aprià
-									una finestra in cui si potrà confermare la votazione o tornare
-									indietro. Tale bottone rimarrà <strong> disabilitato</strong>{" "}
-									fino a che non si avrà fatto una scelta.
+									<strong> "Termina votazione"</strong>. A questo punto si aprià una finestra in cui
+									si potrà confermare la votazione o tornare indietro. Tale bottone rimarrà{" "}
+									<strong> disabilitato</strong> fino a che non si avrà fatto una scelta.
 								</li>
 							</ul>
 						)}
@@ -113,9 +104,7 @@ export default function Votation(props) {
 													: "hover-behaviour"
 											}`}
 											onClick={
-												vote === option || vote === null
-													? () => selectCard(option)
-													: undefined
+												vote === option || vote === null ? () => selectCard(option) : undefined
 											}>
 											<div className="flex-row-container">
 												<img
