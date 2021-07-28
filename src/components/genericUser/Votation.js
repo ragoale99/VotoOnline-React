@@ -116,9 +116,11 @@ export default function Votation(props) {
 											</div>
 
 											<Card.Body>
-												<Card.Title className="centered">
-													<strong>{option.nome}</strong>
-												</Card.Title>
+												<div className="flex-row-container">
+													<p className="title-card">
+														<strong>{option.nome}</strong>
+													</p>
+												</div>
 											</Card.Body>
 										</Card>
 									</Col>
